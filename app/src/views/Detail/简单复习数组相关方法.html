@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = new Array(10)  //10指的是数组的长度
+        console.log(arr);
+        var arr2 = new Array(10, 20)  // 10 20指的是数组中的元素
+        console.log(arr2);
+        console.log(arr2.constructor);
+        console.log(arr2);
+
+        // 检测一个变量属于什么数据类型
+        //typeof 
+        //instanceof
+        //constructor 
+        //Object.prototype.toString
+        //toString
+
+        // 数组的特征
+        //有索引 index
+        //有长度 length
+        //有原型 prototype
+
+        //concat() 合并数组
+        //find()
+        //findIndex()
+
+        //includes()
+        //flat()
+        //from()
+        //fill()
+
+        //every()
+        //filter()
+        //forEach()
+        // map()
+        // some()
+        // keys()
+
+        //isArray()  //判断一个对象是不是数组
+
+        //push()
+        //pop()
+        //shift()
+        //unshift()
+        //reverse()
+        //join()
+        // slice()
+        // splice()
+        //sort()
+        // copeWithin()
+        // indexOf()
+        // lastIndexOf()
+
+        //reduce()
+        var arrNum = [10, 20, 30, 40]
+
+
+        // function totalNum(total, num) {
+        //     return total + num
+        // }
+
+        var num = arrNum.reduce((total, num, index) => {
+            console.log(index);
+            console.log(total);
+            return total + num
+        })
+        console.log(num);
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

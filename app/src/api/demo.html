@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let url = "http://localhost:3000"
+  let paramsStr = ""
+  let params = {
+    username: "llr",
+    age: 18
+  }
+  console.log(Object.keys(params));
+  Object.keys(params).forEach(key => {
+    console.log(key);
+    paramsStr += key + "=" +params[key] + "&"
+  })
+
+  paramsStr = paramsStr.slice(0, -1)
+  console.log(paramsStr);
+  console.log(url + "?" + paramsStr);
+
+</script>
+</body>
+</html>

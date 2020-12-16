@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  防抖--类似于坐电梯--debounce
+      在事件触发n秒后在执行回调，如果n秒内又被触发，则重新计算事件。
+  节流--类似于看视频--throttle
+      在规定的单位时间内，只能触发一次事件回调，但单位时间内触发多次，也只能执行一次。 
+  -->
+  <div>
+    <h2>防抖--debounce</h2>
+    <div>
+      <input type="text" id="text">
+      <input type="text" id="text2">
+    </div>
+    <h2>节流--throttle</h2>
+    <div>
+      <input type="text" id="throttletext">
+      <input type="text" id="throttletext2">
+    </div>
+  </div>
+  <script>
+    // 防抖函数
+    function debounceFn(callback, delay) {
+      var obj;
+      var arguments; //实参列表，是一个伪数组
+      var timer = null; //定义一个定时器
+      var fn = function() {
+        callback.apply(obj, arguments) //修改this指向
+      }
+
+      return function () {
+        obj = this;
+        arguments = arguments;
+        if (timer) {
+          clearTimeout(timer)
+          timer = null
+        }
+        timer = setTimeout(fn, delay)
+      }
+    }
+
+    var oText = document.getElementById("text");
+    var oText2 = document.getElementById("text2")
+    oText.addEventListener("input", debounceFn(function () {
+      oText2.value = oText.value
+    }, 500))
+
+
+    //节流函数
+    function throttleFn(callback, delay) {
+      var obj;
+      var arguments;  //实参列表，是一个伪数组
+      var timer = null  //定义一个定时器
+      var fn = function () {
+        callback.apply(obj, arguments)  //修改this执行
+      }
+      //获取时间
+      var oTime = Date.now()  //获取当前时间的时间戳
+      return function () {
+        obj = this
+        arguments = arguments
+        var nowTime = Date.now()
+
+        var jiangeTime = nowTime - oTime - delay
+        if (jiangeTime >= 0) {
+          oTime = nowTime
+          setTimeout(fn, delay)
+        }
+      }
+    }
+
+    var oThrottleText = document.getElementById("throttletext")
+    var oThrottleText2 = document.getElementById("throttletext2")
+    oThrottleText.addEventListener("input", throttleFn(function () {
+      oThrottleText2.value = oThrottleText.value
+    }))
+  </script>
+</div>
+</body>
+</html>

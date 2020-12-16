@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    // console.log(navigator.userAgent);
+    // console.log(typeof navigator.userAgent);
+
+    if (navigator.userAgent.indexOf("MSIE 9.0") != -1) { //indexOf检测字符串中是否存在某个值
+      alert("我是IE9");
+    } else if (navigator.userAgent.indexOf("MSIE 10.0") != -1) {
+      alert("我是IE10");
+    }
+
+    // 判断是微信内置浏览器
+    if (navigator.userAgent.toLowerCase().indexOf("micromessenger") != -1) {
+      document.getElementById("box").style.background = "#80d640"
+    }
+  </script>
+</body>
+</html>
